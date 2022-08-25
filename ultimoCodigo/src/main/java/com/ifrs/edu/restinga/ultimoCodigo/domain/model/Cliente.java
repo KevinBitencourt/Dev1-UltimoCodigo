@@ -38,6 +38,9 @@ public class Cliente {
 	@JoinColumn(name = "produto_id", nullable = false)
 	private Produto produto;
 	
+	@ManyToMany
+    @JoinTable(name = "cliente_venda",joinColumns = @JoinColumn(name = "cliente_id"),inverseJoinColumns = @JoinColumn(name = "venda_id"))
+    private List<Venda> venda = new ArrayList();
 	
 	// @ManyToMany
 	// @JoinTable(name = "restaurante_forma_pagamento",

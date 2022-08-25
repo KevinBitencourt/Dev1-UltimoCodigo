@@ -46,14 +46,14 @@ public class ProdutoController {
 
 	
 	//6 mapear metodo para responder a requisicao 
-	@GetMapping
+	@GetMapping("/produto/lista")
 	//1 definir metodo
 	public List<Produto> listar(){
 		return produtoRepository.listar();	
 	}
 	
 	
-	@GetMapping("/{produtoId}")
+	@GetMapping("/produto/busca/{produtoId}")
 	//@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Produto> buscar(@PathVariable Long produtoId) {
 		//return cozinhaRepository.buscar(cozinhaId);
@@ -72,7 +72,7 @@ public class ProdutoController {
 		return produtoRepository.salvar(produto);
 	}
 	
-	@PutMapping("/{produtoId}")
+	@PutMapping("/produto/atualiza/{produtoId}")
 	public ResponseEntity<Produto> atualizar (@PathVariable Long produtoId, 
 											@RequestBody Produto produto) {
 		
@@ -87,7 +87,7 @@ public class ProdutoController {
 		return ResponseEntity.notFound().build();            
 	}
 	
-	@DeleteMapping("/{produtoId}")
+	@DeleteMapping("/produto/delete/{produtoId}")
 	public ResponseEntity<Produto> remover(@PathVariable Long produtoId){
 		try {
 			Produto produto = produtoRepository.buscar(produtoId);
